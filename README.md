@@ -15,6 +15,9 @@ The P-Controller outputs a correction based uniquely on the amplitude/strength o
 
 The D-Controller reacts to fast changing input signals. The higher the derivative of the input signal the higher the output of the D-Controller. In the figure below we can see that the PD-Controller overcomes the overshooting problem. 
 The I-Controller outputs the integral of the error. This is useful to take systemic bias into account (e.g. desalignment of the tyres). In the figure below the PDController shows the best result, since there is no systemic bias in the system, but when systemic bias is present, which is often the case in non-ideal systems, the PID-Controller is the best option. 
+https://github.com/Felix-yuan2018/CarND-PID-Control-Project/blob/master/pid.png
+
+https://github.com/Felix-yuan2018/CarND-PID-Control-Project/blob/master/pid.png
 ## Dependencies
 
 * cmake >= 3.5
