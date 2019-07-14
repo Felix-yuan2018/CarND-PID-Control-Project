@@ -24,6 +24,12 @@ Hyperparameters were chosen manually and iteratively after trial and error drivi
 - Ki = 0.001 
 - Kd = 3.147 
 
+Then I tuned parameters, finally got the initial parameters: Kp=0.188, Kd=1.5 and Ki=0.0002. which worked fairly well, and then improved upon that, following is the process: 
+
+The PID controller was implemented in PID.cpp. The method initinitializes the PID with the parameters passed as argument, while in the method UpdateError I use twiddle algorithm to keeps track of the proportional, differential and integral errors of the PID controller. Finally the method TotalError() returns the control input as a result (combining P, I and D corrections). 
+
+The main program main.cpp handles the communication via uWebSockets to the simulator. From lines 35 to 42 two instances of the PID class (one for steering and one for throttle/braking) are created and initialized with the chosen parameters. From lines 63 to 70 both PID controllers are fed every time there is new information coming from the simulator. We pass the Cross Track Error to the PID controlling the steering, which is used to update/compute de PID error and return the steering value. The same is done with the PID controlling the throttle, but in this case we give the difference of the current speed of the car and the reference speed (which is set to 40mph in our case). 
+
 ## Dependencies
 
 * cmake >= 3.5
