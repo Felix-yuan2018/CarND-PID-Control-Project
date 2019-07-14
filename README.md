@@ -10,7 +10,11 @@ The purpose of this project was to "build a PID controller and tune the PID hype
 ### Describe the effect each of the P, I, D components had in your implementation 
 
 PID controllers are a rather basic, but commonly used, class of controllers. PID stands for Proportional, Integral and Derivative Terms. The PID-Controller can be further subdivided into the P-Controller, I-Controller and D-Controller, which can be used separately or as a group to achieve the specific goals depending on the target system. 
+
 The P-Controller outputs a correction based uniquely on the amplitude/strength of the input signal. In our case we feed the P-Controller with the Cross Track Error (or the difference between current speed and reference speed). The larger the input signal the more aggresively the P-Controller tries to compensate. The main problem of the P-Controller is that it tends to overshoot (see image below). Combining the P-Controller with the D-Controller can help solve the overshooting problem. 
+
+The D-Controller reacts to fast changing input signals. The higher the derivative of the input signal the higher the output of the D-Controller. In the figure below we can see that the PD-Controller overcomes the overshooting problem. 
+The I-Controller outputs the integral of the error. This is useful to take systemic bias into account (e.g. desalignment of the tyres). In the figure below the PDController shows the best result, since there is no systemic bias in the system, but when systemic bias is present, which is often the case in non-ideal systems, the PID-Controller is the best option. 
 ## Dependencies
 
 * cmake >= 3.5
