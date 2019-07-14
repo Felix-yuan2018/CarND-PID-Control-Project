@@ -2,7 +2,15 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+##Goal
+The purpose of this project was to "build a PID controller and tune the PID hyperparameters by applying the general processing flow as described in the lessons," and to "test your solution on the simulator!" The simulator provides cross-track error (CTE), speed, and steering angle data via local websocket. The PID (proportional/integral/differential) controller must respond with steering and throttle commands to drive the car reliably around the simulator track. 
 
+##Rubric Discussion Points 
+
+###Describe the effect each of the P, I, D components had in your implementation 
+
+PID controllers are a rather basic, but commonly used, class of controllers. PID stands for Proportional, Integral and Derivative Terms. The PID-Controller can be further subdivided into the P-Controller, I-Controller and D-Controller, which can be used separately or as a group to achieve the specific goals depending on the target system. 
+The P-Controller outputs a correction based uniquely on the amplitude/strength of the input signal. In our case we feed the P-Controller with the Cross Track Error (or the difference between current speed and reference speed). The larger the input signal the more aggresively the P-Controller tries to compensate. The main problem of the P-Controller is that it tends to overshoot (see image below). Combining the P-Controller with the D-Controller can help solve the overshooting problem. 
 ## Dependencies
 
 * cmake >= 3.5
